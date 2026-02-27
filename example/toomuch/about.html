@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - FoodFun Restaurant</title>
+  <meta name="description" content="Learn about FoodFun Restaurant" />
+  <meta name="author" content="FoodFun" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="img/logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Additional page-specific styles */
+    .page-header {
+      padding-top: 128px;
+      padding-bottom: 40px;
+    }
+
+    .page-header-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 64px;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .page-description {
+      color: var(--gray-medium);
+      font-size: 1.125rem;
+      margin-top: 24px;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .mission-section {
+      margin-bottom: 80px;
+    }
+
+    .section-flex {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .section-flex {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .section-image {
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+
+      .section-image,
+      .section-content {
+        width: 50%;
+      }
+    }
+
+    .section-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .story-image {
+      position: relative;
+    }
+
+    .story-image img.spice {
+      position: absolute;
+      width: 180px;
+      height: auto;
+    }
+
+    .story-image img.top-left {
+      top: -24px;
+      left: -24px;
+      transform: rotate(12deg);
+    }
+
+    .story-image img.bottom-right {
+      bottom: -16px;
+      right: -16px;
+    }
+
+    .section-subtitle {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+
+    .values-section {
+      margin-bottom: 80px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .values-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .value-card {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      padding: 24px;
+      transition: var(--transition);
+    }
+
+    .value-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-5px);
+    }
+
+    .team-section {
+      margin-bottom: 40px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .team-member {
+      text-align: center;
+    }
+
+    .member-image-container {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 24px;
+    }
+
+    .member-image-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: linear-gradient(to right, var(--orange), var(--orange-light));
+      opacity: 0.2;
+    }
+
+    .member-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      padding: 4px;
+    }
+
+    .member-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .member-title {
+      color: var(--orange);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .member-bio {
+      color: var(--gray-medium);
+    }
+
+    .coming-soon {
+      text-align: center;
+      padding: 80px 0;
+      color: var(--gray-medium);
+    }
+
+    .review-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .review-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .reviews-list {
+      margin-top: 30px;
+    }
+
+    .review-item {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .review-author {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .review-date {
+      color: var(--gray-medium);
+      font-size: 0.9rem;
+    }
+
+    .review-content {
+      margin-top: 10px;
+    }
+
+    .user-info {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header"></div> <!-- Header will be loaded here -->
+
+
+  <section class="page-header">
+    <div class="container">
+      <div class="page-header-content">
+        <h1 class="page-title">
+          About <span class="text-orange">Us</span>
+        </h1>
+        <div class="section-divider"></div>
+        <p class="page-description">
+          Learn more about our story and what makes us special.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Mission -->
+  <section class="mission-section">
+    <div class="section-container">
+      <div class="section-flex">
+        <div class="section-image">
+          <img src="img/shrimp-dish.png" alt="Restaurant dish" />
+        </div>
+        <div class="section-content">
+          <h2 class="section-title">Our Mission</h2>
+          <p class="section-text">
+            At FoodFun, our mission is to create exceptional dining experiences that delight the senses and bring people
+            together. We believe that great food has the power to create lasting memories and meaningful connections.
+          </p>
+          <p class="section-text">
+            We're committed to sourcing the finest ingredients, supporting local farmers, and crafting dishes that
+            celebrate both tradition and innovation. Every plate that leaves our kitchen reflects our dedication to
+            culinary excellence and our passion for sharing the joy of food.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="mission-section">
+    <div class="section-container">
+      <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">Our Story</h2>
+      <div class="section-flex">
+        <div class="section-content">
+          <h3 class="section-subtitle">Founded in 2010</h3>
+          <p class="section-text">
+            FoodFun began as a small family-owned bistro with a big dream: to create a place where extraordinary food
+            meets warm hospitality. Our founder, Chef Maria, started with just a handful of signature recipes passed
+            down through generations.
+          </p>
+          <p class="section-text">
+            Over the years, we've grown from that modest beginning into a beloved culinary destination, but our core
+            values remain unchanged. We still prepare each dish with the same care and attention to detail as we did on
+            day one.
+          </p>
+          <p class="section-text">
+            What sets us apart is our continuous pursuit of culinary excellence while maintaining the welcoming,
+            intimate atmosphere that makes guests feel at home. Our journey is one of passion, perseverance, and the
+            pure joy of sharing great food.
+          </p>
+        </div>
+        <div class="section-image">
+          <div class="story-image">
+            <img src="img/herbs-pattern.png" alt="Restaurant ambiance" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Values -->
+  <section class="values-section">
+    <div class="section-container">
+      <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">What Makes Us Special</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="feature-icon" style="margin-bottom: 16px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="7"></circle>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+            </svg>
+          </div>
+          <h3 class="feature-title">Quality Ingredients</h3>
+          <p class="feature-description">
+            We source only the freshest, highest-quality ingredients from local farmers and trusted suppliers.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <div class="feature-icon" style="margin-bottom: 16px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Expert Chefs</h3>
+          <p class="feature-description">
+            Our team of passionate culinary experts brings creativity and precision to every dish we serve.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <div class="feature-icon" style="margin-bottom: 16px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3 class="feature-title">Timeless Recipes</h3>
+          <p class="feature-description">
+            We blend traditional techniques with modern innovation to create unforgettable flavors.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <div class="feature-icon" style="margin-bottom: 16px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <h3 class="feature-title">Perfect Location</h3>
+          <p class="feature-description">
+            Situated in the heart of the city, our restaurant offers a convenient and charming dining setting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meet the Team -->
+  <section class="team-section">
+    <div class="section-container">
+      <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">Meet Our Team</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-image-container">
+            <div class="member-image-bg"></div>
+            <img src="img/placeholder.png" alt="Chef Maria" class="member-image">
+          </div>
+          <h3 class="member-name">Pramit Sil</h3>
+          <p class="member-title">Head Chef & Founder</p>
+          <p class="member-bio">
+            With over 20 years of culinary experience, Chef Maria brings passion and innovation to every dish.
+          </p>
+        </div>
+
+        <div class="team-member">
+          <div class="member-image-container">
+            <div class="member-image-bg"></div>
+            <img src="img/placeholder.png" alt="Chef Thomas" class="member-image">
+          </div>
+          <h3 class="member-name">Shreyanshu Maske</h3>
+          <p class="member-title">Executive Chef</p>
+          <p class="member-bio">
+            Chef Thomas specializes in fusion cuisine, blending Eastern and Western techniques with artful precision.
+          </p>
+        </div>
+
+        <div class="team-member">
+          <div class="member-image-container">
+            <div class="member-image-bg"></div>
+            <img src="img/placeholder.png" alt="Sofia" class="member-image">
+          </div>
+          <h3 class="member-name">Krish Mali</h3>
+          <p class="member-title">Pastry Chef</p>
+          <p class="member-bio">
+            Sofia creates our signature desserts, combining classical techniques with unexpected flavor combinations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Reviews Section -->
+  <section class="customer-reviews">
+    <div class="container">
+      <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">What Our Customers Say</h2>
+
+      <div id="userInfo" class="user-info">
+        <!-- User info will be populated by JavaScript -->
+      </div>
+
+      <!-- Review Form -->
+      <form id="reviewForm" class="review-form">
+        <textarea id="reviewInput" class="review-input" placeholder="Write your review here..." required></textarea>
+        <button type="submit" class="btn-primary">Submit Review</button>
+      </form>
+
+      <!-- Reviews List -->
+      <div id="reviewsList" class="reviews-list">
+        <!-- Existing reviews will be dynamically added here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-grid">
+        <!-- Column 1 - About -->
+        <div class="footer-column">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 12H14M4 12V6C4 3.79086 5.79086 2 8 2C10.2091 2 12 3.79086 12 6V12" stroke="white"
+                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <span class="logo-text">Food<span class="text-orange">Fun</span></span>
+          </a>
+          <p class="footer-text">
+            Delicious food in a comfortable atmosphere, creating memories with every bite.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                </path>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                </path>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 - Opening Hours -->
+        <div class="footer-column">
+          <h3 class="footer-heading">Opening Hours</h3>
+          <ul class="footer-list">
+            <li class="footer-list-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon-small">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <div>
+                <p class="footer-info-title">Monday - Friday</p>
+                <p class="footer-info-subtitle">8:00 am - 9:00 pm</p>
+              </div>
+            </li>
+            <li class="footer-list-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon-small">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <div>
+                <p class="footer-info-title">Saturday</p>
+                <p class="footer-info-subtitle">8:00 am - 10:00 pm</p>
+              </div>
+            </li>
+            <li class="footer-list-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon-small">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <div>
+                <p class="footer-info-title">Sunday</p>
+                <p class="footer-info-subtitle">9:00 am - 8:00 pm</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3 - Contact Info -->
+        <div class="footer-column">
+          <h3 class="footer-heading">Contact Info</h3>
+          <ul class="footer-list">
+            <li class="footer-list-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon-small">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <p>Pune, Maharashtra - Loni Kalbhor, India</p>
+            </li>
+            <li class="footer-list-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon-small">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              <p>+91 7041887184</p>
+            </li>
+            <li class="footer-list-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon-small">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <p>foodfunenquiry@gmail.com</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 4 - Newsletter -->
+        <div class="footer-column">
+          <h3 class="footer-heading">Newsletter</h3>
+          <p class="footer-text">
+            Subscribe to our newsletter for regular updates on special offers.
+          </p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your Email" class="newsletter-input">
+            <button class="btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="copyright">
+        <p>© <span id="currentYear"></span> FoodFun. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Dynamically load header
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+  </script>
+  <script>
+    // Check if user is logged in
+    window.onload = function () {
+      const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+      const userInfoDiv = document.getElementById('userInfo');
+      const reviewForm = document.getElementById('reviewForm');
+      const reviewsList = document.getElementById('reviewsList');
+
+      if (currentUser) {
+        userInfoDiv.innerHTML = `
+          <div class="user-details">
+            <p><strong>Name:</strong> ${currentUser.name}</p>
+            <p><strong>Email:</strong> ${currentUser.email}</p>
+          </div>
+        `;
+      } else {
+        userInfoDiv.innerHTML = '<p>Please <a href="login.html">login</a> to leave a review</p>';
+        reviewForm.style.display = 'none';
+      }
+
+      // Load existing reviews
+      const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+      displayReviews(reviews);
+
+      // Handle review submission
+      reviewForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        if (!currentUser) {
+          alert('Please login to leave a review');
+          window.location.href = 'login.html';
+          return;
+        }
+
+        const reviewText = document.getElementById('reviewInput').value.trim();
+
+        if (!reviewText) {
+          alert('Please write a review');
+          return;
+        }
+
+        const review = {
+          user: currentUser,
+          text: reviewText,
+          timestamp: new Date().toISOString()
+        };
+
+        // Add review to local storage
+        reviews.push(review);
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+
+        // Display updated reviews
+        displayReviews(reviews);
+
+        // Clear form
+        document.getElementById('reviewInput').value = '';
+      });
+    };
+
+    // Display reviews
+    function displayReviews(reviews) {
+      const reviewsList = document.getElementById('reviewsList');
+      reviewsList.innerHTML = '';
+
+      reviews.forEach(review => {
+        const reviewElement = document.createElement('div');
+        reviewElement.className = 'review-item';
+        reviewElement.innerHTML = `
+          <div class="review-author">${review.user.name}</div>
+          <div class="review-date">${new Date(review.timestamp).toLocaleDateString()}</div>
+          <div class="review-content">${review.text}</div>
+        `;
+        reviewsList.appendChild(reviewElement);
+      });
+    }
+
+    // Handle login button
+    function handleLogin() {
+      const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+      if (currentUser) {
+        sessionStorage.removeItem('currentUser');
+        window.location.reload();
+      } else {
+        window.location.href = 'login.html';
+      }
+    }
+
+    window.onload = checkLoginStatus;
+
+
+    // Toggle dark mode on all pages
+    document.getElementById('darkModeToggle').onclick = function () {
+      document.body.classList.toggle('dark-mode');
+      // Optionally, save preference
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    };
+    // On page load, apply saved theme
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
+
+</body>
+
+</html>
